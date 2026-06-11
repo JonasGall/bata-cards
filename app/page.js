@@ -1,8 +1,10 @@
-export default function Home() {
+export default function CardPage({ params }) {
+  const { id } = params; // Ito ang "apple", "ball", etc.
+
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Welcome to Bata Cards!</h1>
-      <p>I-scan ang QR code sa iyong card para mag-play ng audio.</p>
+      <h1>Ito ang card para sa: {id}</h1>
+      <p>Dito natin ilalagay ang audio player!</p>
     </div>
   );
 }
