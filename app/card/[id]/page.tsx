@@ -3,21 +3,18 @@ import { QRCodeCanvas } from 'qrcode.react';
 import { use } from 'react';
 
 export default function CardPage({ params }: { params: Promise<{ id: string }> }) {
-  // Ginagamit ang 'use' para i-unwrap ang promise ng params
   const { id } = use(params);
-  
-  const cardUrl = `https://bata-cards-py4a.vercel.app/card/${id}`;
+  const cardUrl = `https://bata-cards.vercel.app/card/${id}`;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }}>
-      <h1>Card ID: {id}</h1>
-      
-      {/* Dito lalabas ang QR Code */}
-      <div style={{ marginTop: '20px', padding: '20px', border: '1px solid #ccc' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px', fontFamily: 'sans-serif' }}>
+      <h1 style={{ textTransform: 'capitalize' }}>Card: {id}</h1>
+
+      <div style={{ marginTop: '20px', padding: '20px', border: '2px solid #333', borderRadius: '10px' }}>
         <QRCodeCanvas value={cardUrl} size={256} />
       </div>
-      
-      <p style={{ marginTop: '20px' }}>I-scan ang QR code para buksan ang card na ito!</p>
+
+      <p style={{ marginTop: '20px', color: '#555' }}>I-scan ang QR code para buksan ang card na ito!</p>
     </div>
   );
 }
