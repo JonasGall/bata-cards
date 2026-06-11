@@ -11,21 +11,23 @@ export default function CardPage({ params }: { params: Promise<{ id: string }> }
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Card: {id.toUpperCase()}</h1>
-      
-      {/* Button para sa Audio */}
-      <button 
-        onClick={playSound}
-        style={{ padding: '20px', fontSize: '20px', marginBottom: '20px', cursor: 'pointer' }}
-      >
-        Click to Hear {id}
-      </button>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-6">
+  <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 text-center w-full max-w-sm">
+    <h1 className="text-4xl font-extrabold text-blue-600 mb-6 capitalize">{id}</h1>
+    
+    <button 
+      onClick={playSound}
+      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg mb-8"
+    >
+      Play Sound 🔊
+    </button>
 
-      {/* QR Code */}
-      <div style={{ marginTop: '20px' }}>
-        <QRCodeCanvas value={`https://bata-cards.vercel.app/card/${id}`} size={128} />
-      </div>
+    <div className="flex justify-center p-4 bg-white rounded-2xl border-2 border-dashed border-gray-200">
+      <QRCodeCanvas value={`https://bata-cards.vercel.app/card/${id}`} size={160} />
     </div>
+    
+    <p className="text-sm text-gray-400 mt-4">Scan QR to share this card</p>
+  </div>
+</div>
   );
 }
